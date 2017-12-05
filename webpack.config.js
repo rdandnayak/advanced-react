@@ -1,6 +1,9 @@
 const path = require('path');
 
 const config = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss']
+  },
   entry: ['babel-polyfill', './lib/components/index.jsx'],
   output: {
     path: path.resolve(__dirname, 'public'),
