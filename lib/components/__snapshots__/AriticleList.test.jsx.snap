@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ArticleList /> renders correctly 1`] = `
+<section>
+  <section
+    styles={undefined}
+  >
+    <div
+      style={
+        Object {
+          "backgroundColor": "#ccc",
+          "borderBottomColor": "#ccc",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": 1,
+          "marginBottom": 10,
+          "padding": 10,
+          "paddingBottom": 10,
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "color": "#888",
+          "fontSize": "0.75em",
+        }
+      }
+    >
+      Invalid Date
+    </div>
+    <div>
+      <a
+        href={undefined}
+        style={
+          Object {
+            "display": "inline-block",
+            "paddingBottom": 10,
+            "paddingTop": 10,
+          }
+        }
+      >
+         
+      </a>
+    </div>
+    <div
+      style={
+        Object {
+          "paddingBottom": 10,
+          "paddingLeft": 20,
+        }
+      }
+    />
+  </section>
+  <section
+    styles={undefined}
+  >
+    <div
+      style={
+        Object {
+          "backgroundColor": "#ccc",
+          "borderBottomColor": "#ccc",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": 1,
+          "marginBottom": 10,
+          "padding": 10,
+          "paddingBottom": 10,
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "color": "#888",
+          "fontSize": "0.75em",
+        }
+      }
+    >
+      Invalid Date
+    </div>
+    <div>
+      <a
+        href={undefined}
+        style={
+          Object {
+            "display": "inline-block",
+            "paddingBottom": 10,
+            "paddingTop": 10,
+          }
+        }
+      >
+         
+      </a>
+    </div>
+    <div
+      style={
+        Object {
+          "paddingBottom": 10,
+          "paddingLeft": 20,
+        }
+      }
+    />
+  </section>
+</section>
+`;

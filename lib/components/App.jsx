@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
 import { data } from '../testData';
-import DataApi from '../dataApi';
+import StateApi from 'state-api';
 import ArticleList from './ArticleList';
+import axios from 'axios';
 
-const api = new DataApi(data);
+// const api = new StateApi(data);
 
 export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      articles: {},
+      authors: {}
+    };
+  }
+
+  async componentDidMount() {
+    let resp = await axios.get('/data');
+    const api = new StateApi(resp.data);
+
+    this.setState(() => ({
       articles: api.getArticles(),
       authors: api.getAuthors()
-    };
+    }));
   }
 
   articleActions = {
