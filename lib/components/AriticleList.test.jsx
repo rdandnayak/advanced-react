@@ -1,6 +1,12 @@
+require('raf'); // kind of a polyfill react needs for animations
 import React from 'react';
 import ArticleList from './ArticleList';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+let enzyme = require('enzyme');
+
+let Adapter = require('enzyme-adapter-react-16');
+
+enzyme.configure({ adapter: new Adapter() });
 
 describe('<ArticleList />', () => {
   it('renders correctly', () => {
@@ -9,12 +15,12 @@ describe('<ArticleList />', () => {
         a: { id: 'a' },
         b: { id: 'b' }
       },
-      articleActions: {
+      store: {
         lookupAuthor: jest.fn(() => ({}))
       }
     };
-    const tree = renderer.create(<ArticleList {...testProps} />).toJSON();
-    expect(tree.children.length).toBe(2);
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(<ArticleList {...testProps} />);
+    expect(wrapper.find('ArticleContainer').length).toBe(2);
+    expect(wrapper).toMatchSnapshot();
   });
 });

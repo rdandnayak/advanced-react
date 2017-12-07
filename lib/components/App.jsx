@@ -1,39 +1,28 @@
 import React, { Component } from 'react';
-import { data } from '../testData';
-import StateApi from 'state-api';
 import ArticleList from './ArticleList';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 // const api = new StateApi(data);
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: {},
-      authors: {}
+  static childContextTypes = {
+    store: PropTypes.object
+  };
+
+  getChildContext() {
+    return {
+      store: this.props.store
     };
   }
 
-  async componentDidMount() {
-    let resp = await axios.get('/data');
-    const api = new StateApi(resp.data);
-
-    this.setState(() => ({
-      articles: api.getArticles(),
-      authors: api.getAuthors()
-    }));
+  constructor(props) {
+    super(props);
+    this.state = this.props.store.getState();
   }
 
-  articleActions = {
-    lookupAuthor: authorId => this.state.authors[authorId]
-  };
   render() {
     return (
-      <ArticleList
-        articles={this.state.articles}
-        articleActions={this.articleActions}
-      />
+      <ArticleList articles={this.state.articles} store={this.props.store} />
     );
   }
 }

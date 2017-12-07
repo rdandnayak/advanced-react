@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import storeProvider from './storeProvider';
 
 const styles = {
   article: {
@@ -33,8 +35,8 @@ const dateDisplay = dateString => {
 };
 
 const Article = props => {
-  const { article, actions } = props;
-  let author = actions.lookupAuthor(article.authorId);
+  const { article, author } = props;
+
   return (
     <section styles={styles.section}>
       <div style={styles.article}>{article.title}</div>
@@ -49,4 +51,20 @@ const Article = props => {
   );
 };
 
-export default Article;
+Article.propTypes = {
+  article: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired
+  })
+};
+
+// let author = store.lookupAuthor(article.authorId);
+
+function extraProps(store, originalProps) {
+  return {
+    author: store.lookupAuthor(originalProps.article.authorId)
+  };
+}
+
+export default storeProvider(extraProps)(Article);
