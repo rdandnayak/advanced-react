@@ -34,22 +34,24 @@ const dateDisplay = dateString => {
   return new Date(dateString).toDateString();
 };
 
-const Article = props => {
-  const { article, author } = props;
+class Article extends React.PureComponent {
+  render() {
+    const { article, author } = this.props;
 
-  return (
-    <section styles={styles.section}>
-      <div style={styles.article}>{article.title}</div>
-      <div style={styles.date}>{dateDisplay(article.date)}</div>
-      <div>
-        <a href={author.website} style={styles.authorName}>
-          {author.firstName} {author.lastName}
-        </a>
-      </div>
-      <div style={styles.body}>{article.body}</div>
-    </section>
-  );
-};
+    return (
+      <section styles={styles.section}>
+        <div style={styles.article}>{article.title}</div>
+        <div style={styles.date}>{dateDisplay(article.date)}</div>
+        <div>
+          <a href={author.website} style={styles.authorName}>
+            {author.firstName} {author.lastName}
+          </a>
+        </div>
+        <div style={styles.body}>{article.body}</div>
+      </section>
+    );
+  }
+}
 
 Article.propTypes = {
   article: PropTypes.shape({
